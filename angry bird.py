@@ -30,7 +30,7 @@ while True:
         v = float(a)
     vx = v*cos(theta)
     vy = v*sin(theta)
-    t = 2*vx/g
+    t = 2*vy/g
     mt = np.linspace(0,t,1000)
     mx = mt*vx
     my = vy*mt-0.5*g*mt**2
