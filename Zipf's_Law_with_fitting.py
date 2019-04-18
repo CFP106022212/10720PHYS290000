@@ -6,7 +6,6 @@ Created on Sat Apr 13 12:35:07 2019
 """
 import string
 import collections
-import numpy as np
 f = open('Alice.txt','r', encoding='utf8')
 a = []
 b= []
@@ -26,15 +25,15 @@ for item in result.items():
 del item,list1,line,res,c
 time.sort()
 time.reverse()
-a = list(range(1,3849))
+a = list(range(1,len(time)+1))
 from scipy import optimize
 import matplotlib.pyplot as plt
 def power_func(x,amp,alpha):
     return amp*x**alpha
 ra,rb = optimize.curve_fit(power_func,a,time)
-plt.plot(a,power_func(a,ra[0],ra[1]),'*r')
-plt.plot(a,time)
+plt.loglog(a,power_func(a,ra[0],ra[1]),'*r')
+plt.loglog(a,time)
 plt.show()
-print('amp: %.3f  alpha: %.3f  covariance: %.3f'% (ra[0],ra[1],np.sqrt(rb[0,0])))
+print('amp: %.3f  alpha: %.3f  covariance: %.3f %.3f %.3f %.3f'% (ra[0],ra[1],rb[0,0],rb[0,1],rb[1,0],rb[1,1]))
 
 
